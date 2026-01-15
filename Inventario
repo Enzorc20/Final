@@ -1,0 +1,70 @@
+// ==== INVENTÁRIO COMPLETO ====
+const inventarioDiv = document.getElementById("itens-inventario");
+const adicionarItemBtn = document.getElementById("adicionar-item");
+
+// Tipos de itens possíveis
+const tiposItem = ["Arma", "Poção", "Escudo", "Outro"];
+
+// Função para adicionar item
+function adicionarItem() {
+    const nome = prompt("Nome do item:");
+    if(!nome) return;
+
+    const tipo = prompt(`Tipo do item? (${tiposItem.join(", ")})`);
+    if(!tipo || !tiposItem.includes(tipo)) return alert("Tipo inválido!");
+
+    const descricao = prompt("Descrição do item:");
+    const valor = prompt("Valor do efeito (dano, cura, defesa, etc):");
+
+    const item = {
+        nome,
+        tipo,
+        descricao,
+        valor: valor ? parseInt(valor) : 0
+    };
+
+    personagem.inventario.push(item);
+    renderizarInventario();
+}
+
+// Função para renderizar inventário
+function renderizarInventario() {
+    inventarioDiv.innerHTML = "";
+    personagem.inventario.forEach((item, i) => {
+        const div = document.createElement("div");
+        div.classList.add("item-inventario");
+        div.innerHTML = `
+            <strong>${item.nome}</strong> 
+            <span style="color: #f9d342;">[${item.tipo}]</span><br>
+            ${item.descricao}<br>
+            ${item.tipo === "Arma" ? "Dano: " + item.valor : ""}
+            ${item.tipo === "Poção" ? "Efeito: " + item.valor : ""}
+            ${item.tipo === "Escudo" ? "Bônus Defesa: " + item.valor : ""}
+        `;
+        inventarioDiv.appendChild(div);
+    });
+}
+
+// Botão adicionar item
+adicionarItemBtn.addEventListener("click", adicionarItem);
+
+// Exemplo de uso inicial
+personagem.inventario.push({
+    nome: "Espada Curta",
+    tipo: "Arma",
+    descricao: "Espada de aço leve, ideal para ataques rápidos",
+    valor: 10
+});
+personagem.inventario.push({
+    nome: "Poção de Cura",
+    tipo: "Poção",
+    descricao: "Recupera 15 PV ao usar",
+    valor: 15
+});
+personagem.inventario.push({
+    nome: "Escudo de Madeira",
+    tipo: "Escudo",
+    descricao: "Reduz 5 de dano recebido",
+    valor: 5
+});
+renderizarInventario();
