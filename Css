@@ -1,0 +1,147 @@
+/* RESET BASICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* BODY */
+body {
+    background-color: #1b1b1b;
+    color: #f0f0f0;
+    line-height: 1.5;
+    padding: 20px;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+header h1 {
+    font-size: 2.5em;
+    color: #f9d342;
+    text-shadow: 2px 2px #000;
+}
+
+/* MAIN */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* SECTIONS */
+section {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* TITULOS DE SECAO */
+section h2 {
+    margin-bottom: 10px;
+    color: #f9d342;
+    border-bottom: 2px solid #f9d342;
+    padding-bottom: 5px;
+}
+
+/* CAMPOS DE INPUT */
+.campo-input {
+    margin-bottom: 10px;
+}
+.campo-input label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+.campo-input input,
+.campo-input textarea {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+}
+
+/* AVATAR */
+.avatar {
+    text-align: center;
+    margin-top: 10px;
+}
+.avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #f9d342;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+#avatar-upload {
+    display: block;
+    margin: 0 auto;
+}
+
+/* ATRIBUTOS */
+.atributo {
+    margin-bottom: 5px;
+}
+.nivel {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* LISTA DE HABILIDADES, TALENTOS, INVENTARIO */
+#lista-habilidades,
+#lista-talentos,
+#itens-inventario {
+    background-color: #3a3a3a;
+    padding: 10px;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* INVENTARIO - BOTÃO */
+#adicionar-item {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #f9d342;
+    color: #1b1b1b;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+#adicionar-item:hover {
+    background-color: #ffd100;
+}
+
+/* PROFISSAO */
+#profissao-atual {
+    background-color: #3a3a3a;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* BARRA DE ROLAGEM PERSONALIZADA */
+#lista-habilidades::-webkit-scrollbar,
+#lista-talentos::-webkit-scrollbar,
+#itens-inventario::-webkit-scrollbar {
+    width: 8px;
+}
+#lista-habilidades::-webkit-scrollbar-thumb,
+#lista-talentos::-webkit-scrollbar-thumb,
+#itens-inventario::-webkit-scrollbar-thumb {
+    background-color: #f9d342;
+    border-radius: 4px;
+}
+#lista-habilidades::-webkit-scrollbar-track,
+#lista-talentos::-webkit-scrollbar-track,
+#itens-inventario::-webkit-scrollbar-track {
+    background-color: #2a2a2a;
+}
