@@ -1,0 +1,156 @@
+// ==== PERSONAGEM ====
+const nomeInput = document.getElementById("nome");
+const sobrenomeInput = document.getElementById("sobrenome");
+const historiaInput = document.getElementById("historia");
+const avatarImg = document.getElementById("avatar-img");
+const avatarUpload = document.getElementById("avatar-upload");
+
+// ==== ATRIBUTOS ====
+let personagem = {
+    nivel: 1,
+    nex: 0,
+    xo: 0,
+    jo: 0,
+    pv: 50,
+    pe: 30,
+    defesa: 10,
+    forca: 5,
+    agilidade: 5,
+    inteligencia: 5,
+    presenca: 5,
+    vigor: 5,
+    talentos: [],
+    habilidades: [],
+    profissao: null,
+    inventario: []
+};
+
+// Atualiza atributos na tela
+function atualizarAtributos() {
+    document.getElementById("pv").innerText = personagem.pv;
+    document.getElementById("pe").innerText = personagem.pe;
+    document.getElementById("defesa").innerText = personagem.defesa;
+    document.getElementById("forca").innerText = personagem.forca;
+    document.getElementById("agilidade").innerText = personagem.agilidade;
+    document.getElementById("inteligencia").innerText = personagem.inteligencia;
+    document.getElementById("presenca").innerText = personagem.presenca;
+    document.getElementById("vigor").innerText = personagem.vigor;
+    document.getElementById("nivel").innerText = personagem.nivel;
+    document.getElementById("nex").innerText = personagem.nex;
+}
+atualizarAtributos();
+
+// ==== AVATAR ====
+avatarUpload.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if(file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            avatarImg.src = evt.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+// ==== HABILIDADES ====
+const listaHabilidadesDiv = document.getElementById("lista-habilidades");
+
+function adicionarHabilidade(nome, descricao) {
+    if(!personagem.habilidades.includes(nome)) {
+        personagem.habilidades.push({nome, descricao, nex: 0});
+        renderizarHabilidades();
+    }
+}
+
+function renderizarHabilidades() {
+    listaHabilidadesDiv.innerHTML = "";
+    personagem.habilidades.forEach((hab, i) => {
+        const div = document.createElement("div");
+        div.classList.add("habilidade");
+        div.innerHTML = `<strong>${hab.nome}</strong> (NEX: ${hab.nex})<br>${hab.descricao}`;
+        listaHabilidadesDiv.appendChild(div);
+    });
+}
+
+// ==== TALENTOS ====
+const listaTalentosDiv = document.getElementById("lista-talentos");
+
+function adicionarTalento(nome, status) {
+    if(!personagem.talentos.includes(nome)) {
+        personagem.talentos.push({nome, status});
+        renderizarTalentos();
+    }
+}
+
+function renderizarTalentos() {
+    listaTalentosDiv.innerHTML = "";
+    personagem.talentos.forEach((tal, i) => {
+        const div = document.createElement("div");
+        div.classList.add("talento");
+        div.innerHTML = `<strong>${tal.nome}</strong> (Status: ${tal.status})`;
+        listaTalentosDiv.appendChild(div);
+    });
+}
+
+// ==== PROFISSÃO ====
+const profissaoDiv = document.getElementById("profissao-atual");
+
+function definirProfissao(nome) {
+    personagem.profissao = nome;
+    profissaoDiv.innerText = nome;
+}
+
+// ==== NÍVEL E NEX ====
+function ganharNEX(valor) {
+    personagem.nex += valor;
+    const nexParaProximo = personagem.nivel * 10; // exemplo: cada nivel precisa NEX = nivel*10
+    if(personagem.nex >= nexParaProximo) {
+        subirNivel();
+        personagem.nex -= nexParaProximo;
+    }
+    atualizarAtributos();
+}
+
+function subirNivel() {
+    personagem.nivel += 1;
+    // exemplo de aumento de atributos a cada nível
+    personagem.pv += 10;
+    personagem.pe += 5;
+    personagem.defesa += 2;
+    personagem.forca += 1;
+    personagem.agilidade += 1;
+    personagem.inteligencia += 1;
+    personagem.presenca += 1;
+    personagem.vigor += 1;
+}
+
+// ==== XO / JO ====
+function ganharXO(valor) {
+    personagem.xo += valor;
+}
+function ganharJO(valor) {
+    personagem.jo += valor;
+}
+
+// ==== INVENTÁRIO ====
+const itensInventarioDiv = document.getElementById("itens-inventario");
+const botaoAdicionarItem = document.getElementById("adicionar-item");
+
+botaoAdicionarItem.addEventListener("click", () => {
+    const nome = prompt("Nome do item:");
+    const descricao = prompt("Descrição do item:");
+    if(nome && descricao) {
+        personagem.inventario.push({nome, descricao});
+        renderizarInventario();
+    }
+});
+
+function renderizarInventario() {
+    itensInventarioDiv.innerHTML = "";
+    personagem.inventario.forEach((item, i) => {
+        const div = document.createElement("div");
+        div.classList.add("item-inventario");
+        div.innerHTML = `<strong>${item.nome}</strong>: ${item.descricao}`;
+        itensInventarioDiv.appendChild(div);
+    });
+}
