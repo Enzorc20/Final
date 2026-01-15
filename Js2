@@ -1,0 +1,6 @@
+function mostrarAba(nome) {
+    const abas = ["habilidades", "talentos", "profissao"];
+    abas.forEach(aba => {
+        document.getElementById(aba).style.display = (aba === nome) ? "block" : "none";
+    });
+}
