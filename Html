@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo RPG</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Olimpo RPG</h1>
+    </header>
+
+    <main>
+        <section id="personagem">
+            <h2>Personagem</h2>
+            <div class="campo-input">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome">
+            </div>
+            <div class="campo-input">
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome">
+            </div>
+            <div class="campo-input">
+                <label for="historia">História:</label>
+                <textarea id="historia" rows="4"></textarea>
+            </div>
+            <div class="avatar">
+                <img id="avatar-img" src="images/avatar-placeholder.png" alt="Avatar do personagem">
+                <input type="file" id="avatar-upload" accept="image/*">
+            </div>
+        </section>
+
+        <section id="atributos">
+            <h2>Atributos</h2>
+            <div class="atributo" data-attr="pv">PV: <span id="pv">0</span></div>
+            <div class="atributo" data-attr="pe">PE: <span id="pe">0</span></div>
+            <div class="atributo" data-attr="defesa">Defesa: <span id="defesa">0</span></div>
+            <div class="atributo" data-attr="forca">Força: <span id="forca">0</span></div>
+            <div class="atributo" data-attr="agilidade">Agilidade: <span id="agilidade">0</span></div>
+            <div class="atributo" data-attr="inteligencia">Inteligência: <span id="inteligencia">0</span></div>
+            <div class="atributo" data-attr="presenca">Presença: <span id="presenca">0</span></div>
+            <div class="atributo" data-attr="vigor">Vigor: <span id="vigor">0</span></div>
+            <div class="nivel">
+                Nível: <span id="nivel">1</span> | NEX: <span id="nex">0</span>
+            </div>
+        </section>
+
+        <section id="habilidades">
+            <h2>Habilidades</h2>
+            <div id="lista-habilidades"></div>
+        </section>
+
+        <section id="talentos">
+            <h2>Talentos</h2>
+            <div id="lista-talentos"></div>
+        </section>
+
+        <section id="profissao">
+            <h2>Profissão / Trabalho</h2>
+            <div id="profissao-atual">Nenhuma</div>
+        </section>
+
+        <section id="inventario">
+            <h2>Inventário</h2>
+            <div id="itens-inventario"></div>
+            <button id="adicionar-item">Adicionar Item</button>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script src="js/script-inventario.js"></script>
+</body>
+</html>
