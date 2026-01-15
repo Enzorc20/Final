@@ -1,0 +1,20 @@
+<div class="abas">
+    <button class="aba-btn" onclick="mostrarAba('habilidades')">Habilidades</button>
+    <button class="aba-btn" onclick="mostrarAba('talentos')">Talentos</button>
+    <button class="aba-btn" onclick="mostrarAba('profissao')">Profissão</button>
+</div>
+
+<div id="habilidades" class="conteudo-aba">
+    <h3>Habilidades</h3>
+    <div id="lista-habilidades"></div>
+</div>
+
+<div id="talentos" class="conteudo-aba" style="display:none">
+    <h3>Talentos</h3>
+    <div id="lista-talentos"></div>
+</div>
+
+<div id="profissao" class="conteudo-aba" style="display:none">
+    <h3>Profissão</h3>
+    <div id="profissao-atual">Nenhuma</div>
+</div>
